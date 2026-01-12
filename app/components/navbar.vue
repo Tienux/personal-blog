@@ -4,7 +4,6 @@
             <NuxtLink class="navbar-item" to="/">Home</NuxtLink>
             <NuxtLink class="navbar-item" to="/blog">Blog</NuxtLink>
             <NuxtLink class="navbar-item" to="/about">About</NuxtLink>
-            <NuxtLink class="navbar-item" to="/contact">Contact</NuxtLink>
         </div>
     </nav>
 </template>
