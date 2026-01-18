@@ -1,10 +1,3 @@
-import { readFileSync } from 'fs';
-
-const loadMardown = async (path) => {
-    const data = readFileSync(path, 'utf-8');
-    return data;
-}
-
 const parseToHTML = (markdown) => {
     return markdown
         .replace(/!\[([^\]]*)\]\(([^)]+)\)/gim, '<img src="$2" alt="$1" />')
@@ -39,9 +32,17 @@ const parseMarkdown = (markdown) => {
    }
    
    const htmlContent = parseToHTML(content);
-   return { metaDonnees, content: htmlContent };
+   return { 
+       title: metaDonnees.title || 'Sans titre',
+       excerpt: metaDonnees.excerpt || metaDonnees.description || '',
+       date: metaDonnees.date || '',
+       metaDonnees, 
+       content: htmlContent 
+   };
 }
 
-export { loadMardown, parseMarkdown };
+
+
+export { parseMarkdown };
 
 
