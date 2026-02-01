@@ -2,8 +2,7 @@
     <nav class="navbar">
         <div class="navbar-container">
             <NuxtLink class="navbar-item" to="/">Home</NuxtLink>
-            <NuxtLink class="navbar-item" to="/blog/blogs">Blog</NuxtLink>
-            <NuxtLink class="navbar-item" to="/projects">Projets</NuxtLink>
+            <NuxtLink class="navbar-item" to="/projets/projects">Projects</NuxtLink>
             <NuxtLink class="navbar-item" to="/about">About</NuxtLink>
         </div>
     </nav>
