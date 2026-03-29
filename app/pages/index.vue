@@ -3,7 +3,10 @@
       <div class="welcome-intro">
             <img :src="profileImage" alt="Profile picture" class="profile-img">
             <h2>Bonjour, je suis Etienne Portron</h2>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus dolore reprehenderit ea doloribus necessitatibus nam reiciendis in cum esse aut sint ad ut modi adipisci quasi ratione, quia quaerat eum.</p>
+            <p> Diplomé du Master en Informatique Intelligent System and Application à Tours.<br><br>
+              Je me décris comme une personne perséverante et extrememment motivée. La collaboration et l'entraide sont des valeurs qui me tiennent à cœur.
+              
+            </p>
       </div>
       <div class="contact">
         <h3>Contact : </h3>
@@ -45,6 +48,7 @@
     gap: 3.5rem;
     justify-content: flex-start;
     padding-top: 1rem;
+    max-width: 800px;
   }
 
   .welcome-intro h2 {
