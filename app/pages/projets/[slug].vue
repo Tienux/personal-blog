@@ -9,12 +9,12 @@
             </div>
             <div class="content" v-html="project.content"></div>
             <div class="back-link">
-                <a href="/projets">← Retour aux projets</a>
+                <a href="/projets/projects">← Retour aux projets</a>
             </div>
         </article>
         <div v-else class="not-found">
             <h2>😕 Projet non trouvé</h2>
-            <a href="/projets">Retour aux projets</a>
+            <a href="/projets/projects">Retour aux projets</a>
         </div>
     </div>
 </template>

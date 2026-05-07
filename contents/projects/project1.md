@@ -3,6 +3,7 @@ title: Mon premier article
 date: 2025-01-13
 description: Une courte description
 tags: [nuxt, vue, web]
+published: false
 ---
 
 # Article test
