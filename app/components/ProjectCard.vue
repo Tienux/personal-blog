@@ -2,7 +2,7 @@
     <div class="project-card">
         <h2>{{ title }}</h2>
         <p>{{ excerpt }}</p>
-        <a :href="link">Voir le projet</a>
+        <NuxtLink :to="link">Voir le projet</NuxtLink>
     </div>
 </template>
 
@@ -48,26 +48,26 @@ defineProps<{
   margin-bottom: 1.5rem;
 }
 
-.project-card a {
-  color: #667eea;
-  text-decoration: none;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  transition: color 0.3s ease;
-}
+  .project-card :deep(a) {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s ease;
+  }
 
-.project-card a:hover {
-  color: #764ba2;
-}
+  .project-card :deep(a:hover) {
+    color: #764ba2;
+  }
 
-.project-card a::after {
-  content: '→';
-  margin-left: 0.5rem;
-  transition: transform 0.3s ease;
-}
+  .project-card :deep(a::after) {
+    content: '→';
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+  }
 
-.project-card a:hover::after {
-  transform: translateX(5px);
-}
+  .project-card :deep(a:hover::after) {
+    transform: translateX(5px);
+  }
 </style>

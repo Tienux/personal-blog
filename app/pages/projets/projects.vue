@@ -12,8 +12,8 @@
         
         <div v-else class="projects-list">
             <ProjectCard
-                v-for="(project, index) in projects"
-                :key="index"
+                v-for="project in projects"
+                :key="project.link"
                 :title="project.title"
                 :excerpt="project.excerpt"
                 :link="project.link"

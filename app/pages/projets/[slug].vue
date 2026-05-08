@@ -9,35 +9,53 @@
             </div>
             <div class="content" v-html="project.content"></div>
             <div class="back-link">
-                <a href="/projets/projects">← Retour aux projets</a>
+                <NuxtLink to="/projets/projects">← Retour aux projets</NuxtLink>
             </div>
         </article>
         <div v-else class="not-found">
             <h2>😕 Projet non trouvé</h2>
-            <a href="/projets/projects">Retour aux projets</a>
+            <NuxtLink to="/projets/projects">Retour aux projets</NuxtLink>
         </div>
     </div>
 </template>
 
+
+
 <script setup>
+import { ref, watch } from 'vue';
 import { parseMarkdown } from 'scripts/markdownParser.js';
 
 const route = useRoute();
-const slug = route.params.slug;
 
 const project = ref(null);
 
-const markdownFiles = import.meta.glob('../../../contents/projects/*.md', { query: '?raw', import: 'default', eager: true });
+const loadProject = (slug) => {
+  const markdownFiles = import.meta.glob('../../../contents/projects/*.md', { 
+    query: '?raw', 
+    import: 'default', 
+    eager: true 
+  });
 
-for (const path in markdownFiles) {
+  for (const path in markdownFiles) {
     const filename = path.split('/').pop().replace('.md', '');
     
     if (filename === slug) {
-        const markdownContent = markdownFiles[path];
-        project.value = parseMarkdown(markdownContent);
-        break;
+      const markdownContent = markdownFiles[path];
+      project.value = parseMarkdown(markdownContent);
+      break;
     }
-}
+  }
+};
+
+// Charger au montage
+loadProject(route.params.slug);
+
+// Recharger si le slug change (réactivité)
+watch(() => route.params.slug, (newSlug) => {
+  if (newSlug) {
+    loadProject(newSlug);
+  }
+});
 </script>
 
 <style scoped>
