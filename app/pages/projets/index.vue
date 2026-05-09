@@ -1,0 +1,108 @@
+<template>
+  <div class="projects-page">
+    <div class="header">
+      <h1>Mes Projets</h1>
+      <p class="subtitle">Découvrez mes réalisations</p>
+    </div>
+
+    <!-- Message si aucun projet -->
+    <div v-if="projects.length === 0" class="no-projects">
+      <p>Aucun projet publié pour le moment. Revenez bientôt !</p>
+    </div>
+
+    <div v-else class="projects-list">
+      <ProjectCard
+        v-for="project in projects"
+        :key="project.link"
+        :title="project.title"
+        :excerpt="project.excerpt"
+        :link="project.link"
+      />
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import { parseMarkdown } from 'scripts/markdownParser.js';
+
+const projects = ref([]);
+
+const markdownFiles = import.meta.glob('../../../contents/projects/*.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+});
+
+for (const path in markdownFiles) {
+  const markdownContent = markdownFiles[path];
+  const parsed = parseMarkdown(markdownContent);
+
+  // Filtrer seulement les publiés
+  const isPublished =
+    parsed.metaDonnees.published === 'true' || parsed.metaDonnees.published === true;
+
+  if (isPublished) {
+    projects.value.push({
+      title: parsed.title,
+      excerpt: parsed.excerpt,
+      date: parsed.date,
+      link: `/projets/${path.split('/').pop().replace('.md', '')}`,
+    });
+  }
+}
+
+// Tri par date
+projects.value.sort((a, b) => new Date(b.date) - new Date(a.date));
+</script>
+
+<style scoped>
+.projects-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing-md);
+  min-height: 60vh;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.header h1 {
+  font-size: var(--font-size-6xl);
+  font-weight: 700;
+  color: var(--color-text-light);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: var(--font-size-xl);
+  color: #B8B8B8;
+  font-weight: 300;
+}
+
+.no-projects {
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+  color: #A6A6A6;
+  font-size: var(--font-size-lg);
+}
+
+.projects-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .projects-list {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

@@ -1,12 +1,15 @@
+@import './variables.scss';
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: monospace, "Courier New", monospace;
+  font-family: var(--font-body);
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #1a1a1a;
+  background-color: var(--color-bg);
 }

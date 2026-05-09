@@ -7,7 +7,14 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.vue",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx,.vue --fix",
+    "format": "prettier --write \"**/*.{js,ts,vue,json,md,scss}\"",
+    "typecheck": "vue-tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
     "dompurify": "^3.4.2",
@@ -19,6 +26,21 @@
     "yaml": "^2.8.4"
   },
   "devDependencies": {
-    "sass": "^1.97.2"
+    "@eslint/js": "^10.0.1",
+    "@testing-library/vue": "^8.1.0",
+    "@typescript-eslint/eslint-plugin": "^8.59.2",
+    "@typescript-eslint/parser": "^8.59.2",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "@vitest/ui": "^4.1.5",
+    "@vue/test-utils": "^2.4.10",
+    "eslint": "^10.3.0",
+    "eslint-plugin-vue": "^10.9.1",
+    "jsdom": "^29.1.1",
+    "prettier": "^3.8.3",
+    "sass": "^1.97.2",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.5",
+    "vue-eslint-parser": "^10.4.0",
+    "vue-tsc": "^3.2.8"
   }
 }

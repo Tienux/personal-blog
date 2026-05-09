@@ -1,39 +1,44 @@
 <template>
-    <nav class="navbar">
-        <div class="navbar-container">
-            <NuxtLink class="navbar-item" to="/">Home</NuxtLink>
-            <NuxtLink class="navbar-item" to="/projets/projects">Projects</NuxtLink>
-            <NuxtLink class="navbar-item" to="/about">About</NuxtLink>
-        </div>
-    </nav>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <NuxtLink class="navbar-item" :to="ROUTES.HOME">Home</NuxtLink>
+      <NuxtLink class="navbar-item" :to="ROUTES.PROJECTS">Projects</NuxtLink>
+      <NuxtLink class="navbar-item" :to="ROUTES.ABOUT">About</NuxtLink>
+    </div>
+  </nav>
 </template>
 
+<script setup>
+import { ROUTES } from 'constants/routes';
+</script>
+
 <style scoped>
-  
 .navbar {
-  background-color: #292929;
-  padding: 1rem 0;
+  background-color: var(--color-bg-navbar);
+  padding: var(--spacing-sm) 0;
   overflow: hidden;
 }
 
 .navbar-container {
   display: flex;
   justify-content: right;
-  margin-right: 2rem;
+  margin-right: var(--spacing-md);
 }
 
 .navbar-item {
-  color: #ffffff;
+  color: var(--color-text-light);
   text-decoration: none;
-  margin: 0 1rem;
+  margin: 0 var(--spacing-sm);
   font-weight: bold;
-  padding: 0.5rem 0.75rem;
+  padding: var(--spacing-xs) 0.75rem;
   display: flex;
   vertical-align: middle;
   align-items: center;
   font-size: large;
   position: relative;
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
 }
 
 .navbar-item::before {
@@ -44,20 +49,18 @@
   right: 0;
   width: 100%;
   height: calc(100% + 2rem);
-  background-color: #0f0f0f;
+  background-color: var(--color-bg-navbar-hover);
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity var(--transition-slow);
   z-index: -1;
 }
 
 .navbar-item:hover {
-  color: #ff6600;
+  color: var(--color-accent);
   transform: scale(1.1);
 }
 
 .navbar-item:hover::before {
   opacity: 1;
 }
-
-
 </style>

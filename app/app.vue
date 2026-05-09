@@ -4,5 +4,5 @@
   </NuxtLayout>
 </template>
 <style>
-  @import 'style/main.scss';
+@import 'style/main.scss';
 </style>

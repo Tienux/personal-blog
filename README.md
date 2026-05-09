@@ -1,6 +1,6 @@
 # Blog Portfolio
 
-Projet de blog 
+Projet de blog
 
 ## Setup
 
