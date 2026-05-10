@@ -54,7 +54,7 @@
       <br />
       <br />
       <br />
-      L'entièreté du site a été fait en utilisant Nuxt 4 .
+      L'intégralité du site a été conçue avec Nuxt 4
     </p>
   </div>
 </template>
@@ -102,6 +102,12 @@
   .about {
     margin: 2rem auto;
     padding: 0 1.5rem;
+    text-align: left;
+    line-height: 1.75;
+  }
+
+  .about p {
+    line-height: 1.75;
   }
 
   .about h2 {
