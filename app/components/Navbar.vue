@@ -16,9 +16,7 @@
 
       <div id="primary-navigation" class="navbar-links" :class="{ open: isMenuOpen }">
         <NuxtLink class="navbar-item" :to="ROUTES.HOME" @click="closeMenu">Home</NuxtLink>
-        <NuxtLink class="navbar-item" :to="ROUTES.PROJECTS" @click="closeMenu">
-          Projects
-        </NuxtLink>
+        <NuxtLink class="navbar-item" :to="ROUTES.PROJECTS" @click="closeMenu"> Projects </NuxtLink>
         <NuxtLink class="navbar-item" :to="ROUTES.ABOUT" @click="closeMenu">About</NuxtLink>
       </div>
     </div>

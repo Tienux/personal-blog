@@ -40,7 +40,17 @@ const loadProject = (slug) => {
 
     if (filename === slug) {
       const markdownContent = markdownFiles[path];
-      project.value = parseMarkdown(markdownContent);
+      const parsed = parseMarkdown(markdownContent);
+
+      // Vérifier si l'article est publié
+      const isPublished =
+        parsed.metaDonnees.published === 'true' || parsed.metaDonnees.published === true;
+
+      if (isPublished) {
+        project.value = parsed;
+      } else {
+        project.value = null; // Article non publié = non trouvé
+      }
       break;
     }
   }

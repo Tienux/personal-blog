@@ -7,7 +7,7 @@ import vueParser from 'vue-eslint-parser';
 export default [
   // Ignore patterns
   {
-    ignores: ['.nuxt/**', 'dist/**', 'node_modules/**', '.git/**'],
+    ignores: ['.nuxt/**', 'dist/**', '.output/**', 'node_modules/**', '.git/**'],
   },
 
   js.configs.recommended,

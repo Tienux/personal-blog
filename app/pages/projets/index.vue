@@ -78,14 +78,14 @@ projects.value.sort((a, b) => new Date(b.date) - new Date(a.date));
 
 .subtitle {
   font-size: var(--font-size-xl);
-  color: #B8B8B8;
+  color: #b8b8b8;
   font-weight: 300;
 }
 
 .no-projects {
   text-align: center;
   padding: var(--spacing-xl) var(--spacing-md);
-  color: #A6A6A6;
+  color: #a6a6a6;
   font-size: var(--font-size-lg);
 }
 
