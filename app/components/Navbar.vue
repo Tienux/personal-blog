@@ -15,9 +15,36 @@
       </button>
 
       <div id="primary-navigation" class="navbar-links" :class="{ open: isMenuOpen }">
-        <NuxtLink class="navbar-item" :to="ROUTES.HOME" @click="closeMenu">Home</NuxtLink>
-        <NuxtLink class="navbar-item" :to="ROUTES.PROJECTS" @click="closeMenu"> Projects </NuxtLink>
-        <NuxtLink class="navbar-item" :to="ROUTES.ABOUT" @click="closeMenu">About</NuxtLink>
+        <NuxtLink class="navbar-item" :to="localePath(ROUTES.HOME)" @click="closeMenu">{{
+          $t('nav.home')
+        }}</NuxtLink>
+        <NuxtLink class="navbar-item" :to="localePath(ROUTES.PROJECTS)" @click="closeMenu">
+          {{ $t('nav.projects') }}
+        </NuxtLink>
+        <NuxtLink class="navbar-item" :to="localePath(ROUTES.ABOUT)" @click="closeMenu">{{
+          $t('nav.about')
+        }}</NuxtLink>
+      </div>
+
+      <!-- Language Selector -->
+      <div class="language-selector">
+        <button
+          class="lang-button"
+          :class="{ active: locale === 'fr' }"
+          @click="switchLanguage('fr')"
+          aria-label="Français"
+        >
+          FR
+        </button>
+        <span class="lang-separator">|</span>
+        <button
+          class="lang-button"
+          :class="{ active: locale === 'en' }"
+          @click="switchLanguage('en')"
+          aria-label="English"
+        >
+          EN
+        </button>
       </div>
     </div>
   </nav>
@@ -25,9 +52,13 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
 
 import { ROUTES } from 'constants/routes';
 
+const { locale } = useI18n();
+const router = useRouter();
 const isMenuOpen = ref(false);
 
 const toggleMenu = () => {
@@ -36,6 +67,30 @@ const toggleMenu = () => {
 
 const closeMenu = () => {
   isMenuOpen.value = false;
+};
+
+const localePath = (path) => {
+  if (locale.value === 'fr') {
+    return path;
+  }
+  return `/en${path}`;
+};
+
+const switchLanguage = (lang) => {
+  const currentPath = router.currentRoute.value.path;
+  let newPath = currentPath;
+
+  // Remove locale prefix if present
+  if (currentPath.startsWith('/en/') || currentPath === '/en') {
+    newPath = currentPath.slice(3) || '/';
+  }
+
+  // Add new locale prefix if not French
+  if (lang === 'en') {
+    newPath = `/en${newPath}`;
+  }
+
+  router.push(newPath);
 };
 </script>
 
@@ -50,10 +105,10 @@ const closeMenu = () => {
 
 .navbar-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   gap: 0.75rem;
-  margin-right: var(--spacing-md);
+  margin: 0 var(--spacing-md);
   position: relative;
 }
 
@@ -177,6 +232,61 @@ const closeMenu = () => {
     top: 0;
     height: 100%;
     border-radius: 0.75rem;
+  }
+}
+
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.lang-button {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--color-text-light);
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.lang-button:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: var(--color-accent);
+}
+
+.lang-button.active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-bg-navbar);
+}
+
+.lang-separator {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .language-selector {
+    margin-left: auto;
+    padding-left: 0;
+    border-left: none;
+    gap: 0.3rem;
+  }
+
+  .lang-button {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .lang-separator {
+    display: none;
   }
 }
 </style>

@@ -1,18 +1,21 @@
 <template>
   <div class="welcome">
     <section class="hero-copy">
-      <p class="hero-kicker">Développeur logiciel</p>
-      <h1>Bonjour, je suis Etienne Portron</h1>
+      <p class="hero-kicker">{{ $t('hero.kicker') }}</p>
+      <h1>{{ $t('hero.title') }}</h1>
       <p class="hero-text">
-        Diplomé du Master en Informatique Intelligent System and Application à Tours.
+        {{ $t('hero.subtitle') }}
         <br /><br />
-        Je me décris comme une personne persévérante et extrêmement motivée. La collaboration et
-        l'entraide sont des valeurs qui me tiennent à cœur.
+        {{ $t('hero.description') }}
       </p>
 
       <div class="hero-actions">
-        <NuxtLink class="hero-button primary" :to="ROUTES.PROJECTS">Voir mes projets</NuxtLink>
-        <NuxtLink class="hero-button secondary" :to="ROUTES.ABOUT">À propos</NuxtLink>
+        <NuxtLink class="hero-button primary" :to="localePath(ROUTES.PROJECTS)">{{
+          $t('buttons.projects')
+        }}</NuxtLink>
+        <NuxtLink class="hero-button secondary" :to="localePath(ROUTES.ABOUT)">{{
+          $t('buttons.about')
+        }}</NuxtLink>
       </div>
     </section>
 
@@ -20,7 +23,7 @@
       <img :src="profileImage" alt="Profile picture" class="profile-img" />
 
       <div class="contact">
-        <h3>Contact</h3>
+        <h3>{{ $t('contact.title') }}</h3>
         <ul>
           <li>
             <svg
@@ -311,7 +314,16 @@
 </style>
 
 <script setup>
+import { useI18n } from 'vue-i18n';
 import { ROUTES } from 'constants/routes';
-
 import profileImage from 'images/placeholder.jpg';
+
+const { locale } = useI18n();
+
+const localePath = (path) => {
+  if (locale.value === 'fr') {
+    return path;
+  }
+  return `/en${path}`;
+};
 </script>

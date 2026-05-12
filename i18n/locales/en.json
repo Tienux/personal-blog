@@ -1,0 +1,45 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About"
+  },
+  "hero": {
+    "kicker": "Software Developer",
+    "title": "Hello, I'm Etienne Portron",
+    "subtitle": "Graduated with a Master's in Intelligent System and Application in Tours.",
+    "description": "I describe myself as a determined and highly motivated person. Collaboration and mutual support are values that matter to me."
+  },
+  "buttons": {
+    "projects": "See my projects",
+    "about": "About"
+  },
+  "contact": {
+    "title": "Contact"
+  },
+  "about": {
+    "title": "Who am I?",
+    "intro": "My name is Etienne, I'm 23 years old, and I'm passionate about programming and algorithms.",
+    "journey_title": "My Journey",
+    "journey_text": "Graduated from the University of Poitiers. I obtained my degree in computer science in 2024 before going to Tours for the new Master's in Intelligent System and Application (ISA). I'm currently pursuing this degree.",
+    "blog_title": "Why this blog?",
+    "blog_text": "I use this blog to share my external activities related to technology. You'll find my YouTube collaborations, technical explorations, and various external projects. By default, the content on this site is published under the Creative Commons CC BY license",
+    "skills_title": "Technical Skills",
+    "skills_languages": "Programming Languages: Java, Python, Rust, JavaScript/TypeScript, C, C#",
+    "skills_frameworks": "Frameworks and Tools: Nuxt.js, Spring Boot, Git / GitHub / GitLab",
+    "career_title": "Professional Experience",
+    "career_1": "Internship - CGI France for MGEN (April-August 2025) - Development and maintenance of internal tools with SpringBoot and GitLab.",
+    "career_2": "Internship - Mutuelle de Poitiers (April-July 2024) - Evolution of an internal business tool with SpringBoot and VueJS.",
+    "career_3": "Seasonal Employment - Mutuelle de Poitiers (Summers 2021-2023) - Technical support and micro-network management.",
+    "other_title": "Other Information",
+    "other_text": "This blog is personal and non-professional, my opinions are my own and do not reflect necessarily those of my employers or affiliations. I am open to collaboration and discussions on technology-related topics, so feel free to contact me via social networks or email.",
+    "nuxt": "The entire site was built with Nuxt 4"
+  },
+  "projects": {
+    "title": "My Projects",
+    "subtitle": "Discover my work",
+    "no_projects": "No projects published yet. Come back soon!",
+    "back": "Back to projects",
+    "not_found": "Project not found"
+  }
+}

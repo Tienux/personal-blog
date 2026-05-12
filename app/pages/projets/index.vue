@@ -1,13 +1,13 @@
 <template>
   <div class="projects-page">
     <div class="header">
-      <h1>Mes Projets</h1>
-      <p class="subtitle">Découvrez mes réalisations</p>
+      <h1>{{ $t('projects.title') }}</h1>
+      <p class="subtitle">{{ $t('projects.subtitle') }}</p>
     </div>
 
     <!-- Message si aucun projet -->
     <div v-if="projects.length === 0" class="no-projects">
-      <p>Aucun projet publié pour le moment. Revenez bientôt !</p>
+      <p>{{ $t('projects.no_projects') }}</p>
     </div>
 
     <div v-else class="projects-list">
@@ -23,37 +23,70 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { parseMarkdown } from 'scripts/markdownParser.js';
 
+const { locale } = useI18n();
 const projects = ref([]);
 
-const markdownFiles = import.meta.glob('../../../contents/projects/*.md', {
+const markdownFiles = import.meta.glob('../../../contents/projects/*/*.md', {
   query: '?raw',
   import: 'default',
   eager: true,
 });
 
-for (const path in markdownFiles) {
-  const markdownContent = markdownFiles[path];
-  const parsed = parseMarkdown(markdownContent);
-
-  // Filtrer seulement les publiés
-  const isPublished =
-    parsed.metaDonnees.published === 'true' || parsed.metaDonnees.published === true;
-
-  if (isPublished) {
-    projects.value.push({
-      title: parsed.title,
-      excerpt: parsed.excerpt,
-      date: parsed.date,
-      link: `/projets/${path.split('/').pop().replace('.md', '')}`,
-    });
+const localePath = (path) => {
+  if (locale.value === 'fr') {
+    return path;
   }
-}
+  return `/en${path}`;
+};
 
-// Tri par date
-projects.value.sort((a, b) => new Date(b.date) - new Date(a.date));
+const loadProjects = () => {
+  projects.value = [];
+  const langFolder = locale.value === 'fr' ? 'fr' : 'en';
+
+  for (const path in markdownFiles) {
+    // Extraire le dossier de langue et le filename
+    const pathParts = path.split('/');
+    const folder = pathParts[pathParts.length - 2]; // 'fr' ou 'en'
+    const filename = pathParts[pathParts.length - 1].replace('.md', '');
+
+    // Ne charger que les fichiers du bon dossier de langue
+    if (folder === langFolder) {
+      const markdownContent = markdownFiles[path];
+      const parsed = parseMarkdown(markdownContent);
+
+      // Filtrer seulement les publiés
+      const isPublished =
+        parsed.metaDonnees.published === 'true' || parsed.metaDonnees.published === true;
+
+      if (isPublished) {
+        projects.value.push({
+          title: parsed.title,
+          excerpt: parsed.excerpt,
+          date: parsed.date,
+          link: localePath(`/projets/${filename}`),
+        });
+      }
+    }
+  }
+
+  // Tri par date
+  projects.value.sort((a, b) => new Date(b.date) - new Date(a.date));
+};
+
+// Charger les projets au montage
+loadProjects();
+
+// Recharger si la langue change
+watch(
+  () => locale.value,
+  () => {
+    loadProjects();
+  }
+);
 </script>
 
 <style scoped>

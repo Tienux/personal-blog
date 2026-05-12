@@ -9,36 +9,52 @@
       </div>
       <div class="content" v-html="project.content"></div>
       <div class="back-link">
-        <NuxtLink :to="ROUTES.PROJECTS">← Retour aux projets</NuxtLink>
+        <NuxtLink :to="localePath(ROUTES.PROJECTS)">← {{ $t('projects.back') }}</NuxtLink>
       </div>
     </article>
     <div v-else class="not-found">
-      <h2>😕 Projet non trouvé</h2>
-      <NuxtLink :to="ROUTES.PROJECTS">Retour aux projets</NuxtLink>
+      <h2>😕 {{ $t('projects.not_found') }}</h2>
+      <NuxtLink :to="localePath(ROUTES.PROJECTS)">{{ $t('projects.back') }}</NuxtLink>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { parseMarkdown } from 'scripts/markdownParser.js';
 import { ROUTES } from 'constants/routes';
 
 const route = useRoute();
+const { locale } = useI18n();
 
 const project = ref(null);
 
+const localePath = (path) => {
+  if (locale.value === 'fr') {
+    return path;
+  }
+  return `/en${path}`;
+};
+
 const loadProject = (slug) => {
-  const markdownFiles = import.meta.glob('../../../contents/projects/*.md', {
+  // Construire le chemin selon la locale
+  const langFolder = locale.value === 'fr' ? 'fr' : 'en';
+
+  const markdownFiles = import.meta.glob('../../../contents/projects/*/*.md', {
     query: '?raw',
     import: 'default',
     eager: true,
   });
 
   for (const path in markdownFiles) {
-    const filename = path.split('/').pop().replace('.md', '');
+    // Extraire le filename et vérifier le dossier de langue
+    const pathParts = path.split('/');
+    const folder = pathParts[pathParts.length - 2]; // 'fr' ou 'en'
+    const filename = pathParts[pathParts.length - 1].replace('.md', '');
 
-    if (filename === slug) {
+    // Charger uniquement si on est dans le bon dossier de langue ET le bon slug
+    if (folder === langFolder && filename === slug) {
       const markdownContent = markdownFiles[path];
       const parsed = parseMarkdown(markdownContent);
 
@@ -49,20 +65,23 @@ const loadProject = (slug) => {
       if (isPublished) {
         project.value = parsed;
       } else {
-        project.value = null; // Article non publié = non trouvé
+        project.value = null;
       }
-      break;
+      return;
     }
   }
+
+  // Si pas trouvé
+  project.value = null;
 };
 
 // Charger au montage
 loadProject(route.params.slug);
 
-// Recharger si le slug change (réactivité)
+// Recharger si le slug ou la locale change
 watch(
-  () => route.params.slug,
-  (newSlug) => {
+  () => [route.params.slug, locale.value],
+  ([newSlug]) => {
     if (newSlug) {
       loadProject(newSlug);
     }
