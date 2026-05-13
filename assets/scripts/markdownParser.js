@@ -2,6 +2,16 @@ import { marked } from 'marked';
 import DOMPurify from 'isomorphic-dompurify';
 import * as YAML from 'yaml';
 
+const renderer = new marked.Renderer();
+renderer.link = ({ href, title, text }) => {
+  const isExternal = href?.startsWith('http');
+  const rel = isExternal ? ' rel="noopener noreferrer"' : '';
+  const target = isExternal ? ' target="_blank"' : '';
+  const titleAttr = title ? ` title="${title}"` : '';
+  return `<a href="${href}"${target}${rel}${titleAttr}>${text}</a>`;
+};
+marked.use({ renderer });
+
 const parseMarkdown = (markdown) => {
   const pattern = /^---\n([\s\S]*?)\n---/;
   const match = markdown.match(pattern);
@@ -13,7 +23,6 @@ const parseMarkdown = (markdown) => {
     const frontMatterText = match[1];
     content = markdown.slice(endIndex).trim();
 
-    // Utiliser un vrai parseur YAML au lieu de split(':')
     try {
       metaDonnees = YAML.parse(frontMatterText) || {};
     } catch (e) {
@@ -22,32 +31,19 @@ const parseMarkdown = (markdown) => {
     }
   }
 
-  // Utilise marked pour parser le markdown
   const rawHtml = marked.parse(content);
 
-  // Sanitize avec DOMPurify pour éviter XSS
   const htmlContent = DOMPurify.sanitize(rawHtml, {
     ALLOWED_TAGS: [
-      'h1',
-      'h2',
-      'h3',
-      'h4',
-      'h5',
-      'h6',
-      'p',
-      'br',
-      'ul',
-      'ol',
-      'li',
-      'strong',
-      'em',
-      'code',
-      'pre',
-      'a',
-      'img',
+      'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+      'p', 'br',
+      'ul', 'ol', 'li',
+      'strong', 'em',
+      'code', 'pre',
+      'a', 'img',
       'blockquote',
     ],
-    ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'class'],
+    ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'class', 'target', 'rel'],
   });
 
   return {
