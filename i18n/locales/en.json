@@ -41,5 +41,16 @@
     "no_projects": "No projects published yet. Come back soon!",
     "back": "Back to projects",
     "not_found": "Project not found"
+  },
+  "seo": {
+    "home_title": "Home",
+    "home_description": "Etienne Portron portfolio and blog: projects, background, and tech content.",
+    "about_title": "About",
+    "about_description": "Learn about Etienne Portron background, skills, and experience.",
+    "projects_title": "Projects",
+    "projects_description": "Browse projects published by Etienne Portron.",
+    "project_detail_description": "Details about the project {title} published on Etienne Portron portfolio/blog.",
+    "project_not_found_title": "Project not found",
+    "project_not_found_description": "The requested project could not be found on the portfolio/blog."
   }
 }

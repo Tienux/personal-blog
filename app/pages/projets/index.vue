@@ -27,8 +27,18 @@ import { ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { parseMarkdown } from 'scripts/markdownParser.js';
 
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 const projects = ref([]);
+const runtimeConfig = useRuntimeConfig();
+
+useSeoMeta({
+  title: () => t('seo.projects_title'),
+  description: () => t('seo.projects_description'),
+  ogTitle: () => t('seo.projects_title'),
+  ogDescription: () => t('seo.projects_description'),
+  ogImage: () => `${runtimeConfig.public.siteUrl}${runtimeConfig.public.defaultOgImage}`,
+  ogType: 'website',
+});
 
 const markdownFiles = import.meta.glob('../../../contents/projects/*/*.md', {
   query: '?raw',

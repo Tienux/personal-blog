@@ -1,6 +1,31 @@
 import { fileURLToPath } from 'node:url';
 export default defineNuxtConfig({
   compatibilityDate: '2026-01-13',
+  runtimeConfig: {
+    public: {
+      siteUrl: 'https://example.com',
+      siteName: 'Etienne Portron - Portfolio & Blog',
+      defaultOgImage: '/og-image.jpg',
+    },
+  },
+  app: {
+    head: {
+      titleTemplate: '%s | Etienne Portron',
+      meta: [
+        { name: 'description', content: 'Portfolio et blog tech d Etienne Portron.' },
+        { property: 'og:title', content: 'Etienne Portron - Portfolio & Blog' },
+        { property: 'og:description', content: 'Portfolio et blog tech d Etienne Portron.' },
+        { property: 'og:image', content: '/og-image.jpg' },
+        { property: 'og:type', content: 'website' },
+      ],
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    },
+  },
+  nitro: {
+    prerender: {
+      routes: ['/sitemap.xml'],
+    },
+  },
   alias: {
     style: fileURLToPath(new URL('./assets/style', import.meta.url)),
     images: fileURLToPath(new URL('./assets/images', import.meta.url)),

@@ -318,7 +318,17 @@ import { useI18n } from 'vue-i18n';
 import { ROUTES } from 'constants/routes';
 import profileImage from 'images/placeholder.jpg';
 
-const { locale } = useI18n();
+const { locale, t } = useI18n();
+const runtimeConfig = useRuntimeConfig();
+
+useSeoMeta({
+  title: () => t('seo.home_title'),
+  description: () => t('seo.home_description'),
+  ogTitle: () => t('seo.home_title'),
+  ogDescription: () => t('seo.home_description'),
+  ogImage: () => `${runtimeConfig.public.siteUrl}${runtimeConfig.public.defaultOgImage}`,
+  ogType: 'website',
+});
 
 const localePath = (path) => {
   if (locale.value === 'fr') {

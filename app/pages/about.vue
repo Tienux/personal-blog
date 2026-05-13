@@ -24,6 +24,20 @@
   </div>
 </template>
 
+<script setup>
+const { t } = useI18n();
+const runtimeConfig = useRuntimeConfig();
+
+useSeoMeta({
+  title: () => t('seo.about_title'),
+  description: () => t('seo.about_description'),
+  ogTitle: () => t('seo.about_title'),
+  ogDescription: () => t('seo.about_description'),
+  ogImage: () => `${runtimeConfig.public.siteUrl}${runtimeConfig.public.defaultOgImage}`,
+  ogType: 'website',
+});
+</script>
+
 <style>
 .about {
   max-width: 900px;

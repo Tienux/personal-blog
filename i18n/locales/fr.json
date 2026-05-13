@@ -41,5 +41,16 @@
     "no_projects": "Aucun projet publié pour le moment. Revenez bientôt !",
     "back": "Retour aux projets",
     "not_found": "Projet non trouvé"
+  },
+  "seo": {
+    "home_title": "Accueil",
+    "home_description": "Portfolio et blog d Etienne Portron : projets, parcours et contenus tech.",
+    "about_title": "A propos",
+    "about_description": "Decouvrez le parcours, les competences et l experience d Etienne Portron.",
+    "projects_title": "Projets",
+    "projects_description": "Explorez les projets publies par Etienne Portron.",
+    "project_detail_description": "Details du projet {title} publie sur le portfolio/blog d Etienne Portron.",
+    "project_not_found_title": "Projet introuvable",
+    "project_not_found_description": "Le projet demande est introuvable sur le portfolio/blog."
   }
 }

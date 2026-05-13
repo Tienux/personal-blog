@@ -20,15 +20,41 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { parseMarkdown } from 'scripts/markdownParser.js';
 import { ROUTES } from 'constants/routes';
 
 const route = useRoute();
-const { locale } = useI18n();
+const { locale, t } = useI18n();
+const runtimeConfig = useRuntimeConfig();
 
 const project = ref(null);
+
+const seoTitle = computed(() => {
+  if (project.value?.title) {
+    return project.value.title;
+  }
+
+  return t('seo.project_not_found_title');
+});
+
+const seoDescription = computed(() => {
+  if (project.value?.title) {
+    return t('seo.project_detail_description', { title: project.value.title });
+  }
+
+  return t('seo.project_not_found_description');
+});
+
+useSeoMeta({
+  title: () => seoTitle.value,
+  description: () => seoDescription.value,
+  ogTitle: () => seoTitle.value,
+  ogDescription: () => seoDescription.value,
+  ogImage: () => `${runtimeConfig.public.siteUrl}${runtimeConfig.public.defaultOgImage}`,
+  ogType: 'article',
+});
 
 const localePath = (path) => {
   if (locale.value === 'fr') {
