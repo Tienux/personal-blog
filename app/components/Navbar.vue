@@ -105,7 +105,7 @@ const switchLanguage = (lang) => {
 
 .navbar-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   gap: 0.75rem;
   margin: 0 var(--spacing-md);
