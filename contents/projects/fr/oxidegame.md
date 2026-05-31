@@ -11,52 +11,30 @@ published: true
 ![OxideGames sur YouTube](/images/oxidegames/oxidegames-banner.png)
 *Chaîne Youtube d'OxideGames*
 
-[OxideGames](https://www.youtube.com/@OxideGames-k3f) est une chaîne YouTube
-francophone qui documente la création d'un jeu de ferme (type Stardew Valley pour les connaisseurs) de A à Z, en Rust
-avec le moteur **Bevy**. Le contenu technique sur Bevy en français est quasi
-inexistant — la plupart des ressources sont en anglais, parfois dans des vidéos de plusieurs heures. OxideGames comble ce vide avec un projet fil rouge concret.
+[OxideGames](https://www.youtube.com/@OxideGames-k3f) est une chaîne YouTube francophone qui documente la création d'un jeu de ferme (type Stardew Valley pour les connaisseurs) de A à Z, en Rust avec le moteur Bevy. Le contenu technique sur Bevy en français est quasi inexistant : la plupart des ressources sont en anglais, parfois dans des vidéos de plusieurs heures. OxideGames comble ce vide avec un projet fil rouge concret.
 
 ## Ce que je fais
 
-Je m'occupe du montage : découpage des rushes, rythme, synchronisation audio,
-transitions. L'objectif est qu'une personne curieuse de Bevy puisse comprendre
-le moteur sans se noyer — des vidéos courtes, denses sur l'essentiel, avec une
-touche d'humour pour que ça reste digeste.
-
-Le format impose une contrainte claire : pas de rembourrage, chaque minute doit
-justifier sa présence. Sur du contenu technique, c'est le montage qui fait tenir
-l'attention — pas juste le fond.
+Je m'occupe du montage : découpage des rushes, rythme, synchronisation audio, transitions. L'objectif est qu'une personne curieuse de Bevy puisse comprendre le moteur sans se noyer. Les vidéos courtes, denses sur l'essentiel, avec une touche d'humour pour que ça reste digeste.
 
 ## Les vidéos
 
 ### #1 — Introduction à Bevy & ECS
 
-La vidéo fondatrice. Elle pose les bases sur lesquelles toute la série repose :
-pourquoi Rust plutôt qu'Unity, Unreal Engine ou Godot, comment fonctionne Bevy, et surtout
-ce qu'est l'**ECS** — le paradigme qui structure tout dans ce moteur.
+La vidéo fondatrice. Elle pose les bases sur lesquelles toute la série repose : pourquoi Rust plutôt qu'Unity, Unreal Engine ou Godot, comment fonctionne Bevy, et surtout ce qu'est l'ECS, le paradigme qui structure tout dans ce moteur.
 
+L'analogie utilisée dans la vidéo est parlante : le jeu comme un grand tableau Excel. Chaque entité est une ligne (le joueur, un ennemi, une balle). Chaque composant est une colonne (position, vitesse, texture). Les systèmes sont la logique qui parcourt ce tableau et agit sur les entités qui ont les bonnes colonnes ; un système de déplacement ne s'intéresse qu'aux entités qui ont Position et Velocity, peu importe ce qu'elles représentent.
 
+La conséquence directe : les systèmes sans dépendances communes tournent en parallèle nativement.
 
-L'analogie utilisée dans la vidéo est parlante : le jeu comme un grand tableau
-Excel. Chaque **entité** est une ligne (le joueur, un ennemi, une balle).
-Chaque **composant** est une colonne (position, vitesse, texture). Les
-**systèmes** sont la logique qui parcourt ce tableau et agit sur les entités
-qui ont les bonnes colonnes — un système de déplacement ne s'intéresse qu'aux
-entités qui ont `Position` et `Velocity`, peu importe ce qu'elles représentent.
-La conséquence directe : les systèmes sans dépendances communes tournent en
-parallèle nativement.
-
-L'ensemble est rendu accessible via `use bevy::prelude::*` — une seule ligne
-qui importe tout le nécessaire : entités, systèmes, clavier, rendu.
+L'ensemble est rendu accessible via `use bevy::prelude::*`, une seule ligne qui importe tout le nécessaire : entités, systèmes, clavier, rendu.
 
 ![Schéma ECS — entités, composants, systèmes](/images/oxidegames/ecs-schema.png)
 *Extrait vidéo Introduction à Bevy, passage sur l'ECS*
 
-Côté pratique, la vidéo couvre l'installation de Rust, la création du projet
-avec `cargo new farm_game`, la structure `Cargo.toml` / `src/main.rs`, et les
-deux premiers concepts du scheduler Bevy : `Startup` pour ce qui s'exécute une
-fois au lancement, `Update` pour ce qui tourne à chaque frame.
-Cela aura son utilité dans la suite des vidéos
+Côté pratique, la vidéo couvre l'installation de Rust, la création du projet avec `cargo new farm_game`, la structure `Cargo.toml` / `src/main.rs`, et les deux premiers concepts du scheduler Bevy : Startup pour ce qui s'exécute une fois au lancement, et Update pour ce qui tourne à chaque frame.
+
+Cela aura son utilité dans la suite des vidéos.
 
 ![Structure du projet Cargo](/images/oxidegames/cargo-structure.png)
 *Structure de base du projet*
