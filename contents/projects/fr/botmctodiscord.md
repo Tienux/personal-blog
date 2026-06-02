@@ -49,7 +49,7 @@ et émet des événements selon ce qu'il détecte.
 Le module `stats` lit les fichiers de statistiques du serveur et calcule la
 progression des joueurs entre le début et la fin de session.
 
-Les commandes du bot sont dans le module `commands/`.
+Les commandes du bot sont dans le module `commands`.
 
 Le `config.json` permet de configurer quels événements annoncer et quelles
 statistiques afficher dans le rapport de session.
@@ -83,6 +83,8 @@ différencie les deux cas et peut mentionner les joueurs concernés directement
 via leur compte Discord.
 
 ![Exemples d'annonces en temps réel dans Discord](/images/mcbotlinker/annonces-temps-reel.png)
+*Exemple d'interaction possible. Ici, on voit l'annonce du serveur, ensuite on voit le message de connexion. Puis je meurs sur le jeu.
+Ce qui me mentionne sur le serveur grâce au mapping Joueur -> Discord ID* 
 
 Les messages sont personnalisables via le `config.json` avec des variables
 dynamiques : `{player}`, `{killer}`, `{victim}`. Chaque type d'événement
@@ -95,10 +97,16 @@ Il présente un classement des joueurs pour chaque statistique activée :
 morts, blocs minés, temps de jeu, créatures tuées, dégâts infligés et subis.
 
 ![Rapport de fin de session dans Discord](/images/mcbotlinker/rapport-fin-session.png)
+*Les stats des différents joueurs sur le serveur*
 
 Les statistiques affichées sont configurables : si les morts ne vous
 intéressent pas, vous les désactivez et elles n'apparaissent pas dans
 le rapport.
+
+![Rapport de fin de session dans Discord](/images/mcbotlinker/confjson-stats.png)
+*Uniquement les stats à true sont affichés. Elles correspondent aux champs de l'image*
+
+Bien sur l'entièreté des stats du jeu ne sont pas encore mise dans le bot mais c'est l'objet d'une Issue.
 
 ### Commandes slash
 
@@ -138,7 +146,7 @@ J'avais déjà vu ce type de workflow en contexte professionnel, mais le
 configurer soi-même ancre les choses différemment.
 
 ![Image d'une pipeline réussi ](/images/mcbotlinker/ci.png)
-* La joie en une image *
+*La joie en une image*
 
 Travailler avec des issues sur un projet solo m'a forcé à découper le
 travail en unités claires et à maintenir une vision d'ensemble sur ce
@@ -154,6 +162,6 @@ beaucoup moins de filets de sécurité.
 ![Issues et todos restants](/images/mcbotlinker/todos.png)
 *Ce qu'il reste à faire*
 
-Le projet n'est pas terminé. Il reste du boulot, et le [dépot Github](https://github.com/Tienux/Minecraft_Linker_Bot_Rust_Edition) est public : toute contribution est la bienvenue. De mon côté, d'autres
+Le projet n'est pas terminé. Il reste du travail, et le [dépôt Github](https://github.com/Tienux/Minecraft_Linker_Bot_Rust_Edition) est public : toute contribution est la bienvenue. De mon côté, d'autres
 projets sont sur le feu et la suite viendra à son rythme.
 
