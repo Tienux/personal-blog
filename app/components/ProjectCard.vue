@@ -2,7 +2,7 @@
   <div class="project-card">
     <h2>{{ title }}</h2>
     <p>{{ excerpt }}</p>
-    <NuxtLink :to="link">Voir le projet</NuxtLink>
+    <NuxtLink :to="link">{{ $t('projects.view_project') }}</NuxtLink>
   </div>
 </template>
 

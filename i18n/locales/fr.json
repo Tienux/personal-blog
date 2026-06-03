@@ -40,7 +40,8 @@
     "subtitle": "Découvrez mes réalisations",
     "no_projects": "Aucun projet publié pour le moment. Revenez bientôt !",
     "back": "Retour aux projets",
-    "not_found": "Projet non trouvé"
+    "not_found": "Projet non trouvé",
+    "view_project": "Voir le projet"
   },
   "seo": {
     "home_title": "Accueil",

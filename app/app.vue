@@ -9,9 +9,9 @@ const runtimeConfig = useRuntimeConfig();
 
 useSeoMeta({
   title: 'Etienne Portron - Portfolio & Blog',
-  description: 'Portfolio et blog tech d Etienne Portron.',
+  description: 'Portfolio et blog tech d\'Etienne Portron.',
   ogTitle: 'Etienne Portron - Portfolio & Blog',
-  ogDescription: 'Portfolio et blog tech d Etienne Portron.',
+  ogDescription: 'Portfolio et blog tech d\'Etienne Portron.',
   ogImage: `${runtimeConfig.public.siteUrl}${runtimeConfig.public.defaultOgImage}`,
   ogType: 'website',
 });

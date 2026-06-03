@@ -12,9 +12,9 @@ export default defineNuxtConfig({
     head: {
       titleTemplate: '%s | Etienne Portron',
       meta: [
-        { name: 'description', content: 'Portfolio et blog tech d Etienne Portron.' },
+        { name: 'description', content: 'Portfolio et blog tech d\'Etienne Portron.' },
         { property: 'og:title', content: 'Etienne Portron - Portfolio & Blog' },
-        { property: 'og:description', content: 'Portfolio et blog tech d Etienne Portron.' },
+        { property: 'og:description', content: 'Portfolio et blog tech d\'Etienne Portron.' },
         { property: 'og:image', content: '/og-image.jpg' },
         { property: 'og:type', content: 'website' },
       ],
