@@ -1,6 +1,6 @@
 ---
 title: Minecraft Linker Bot - Rust Edition
-date: 2026-01-20
+date: 2026-03-06
 description: A Discord bot in Rust that links a Minecraft server's events to Discord in real time.
 tags: [rust, discord, minecraft, bot, ci-cd]
 published: true

@@ -1,6 +1,6 @@
 ---
 title: OxideGames - Video Editor
-date: 2026-01-20
+date: 2026-02-03
 description: Video editing for OxideGames about Bevy
 tags: [rust, gamedev, bevy, youtube]
 published: true

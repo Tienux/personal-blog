@@ -1,6 +1,6 @@
 ---
 title: OxideGames - Monteur vidéo
-date: 2026-01-20
+date: 2026-02-03
 description: Montage vidéo pour OxideGames sur Bevy
 tags: [rust, gamedev, bevy, youtube]
 published: true

@@ -30,6 +30,8 @@ export default [
         process: 'readonly',
         Buffer: 'readonly',
         defineNuxtConfig: 'readonly',
+        useRuntimeConfig: 'readonly',
+        useSeoMeta: 'readonly',
       },
     },
     plugins: {
@@ -59,6 +61,9 @@ export default [
         defineNuxtConfig: 'readonly',
         useRoute: 'readonly',
         useRouter: 'readonly',
+        useI18n: 'readonly',
+        useRuntimeConfig: 'readonly',
+        useSeoMeta: 'readonly',
         NuxtLink: 'readonly',
         NuxtLayout: 'readonly',
         NuxtPage: 'readonly',

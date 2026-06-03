@@ -5,12 +5,10 @@ let t = (k: string) => k
 let locale = { value: 'fr' }
 try {
   // useI18n is available via @nuxtjs/i18n
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   const i18n = useI18n()
   t = i18n.t
   locale = i18n.locale
-} catch (e) {
+} catch {
   // fallback: keep simple strings
 }
 const homePath = () => (locale?.value === 'en' ? '/en' : '/')

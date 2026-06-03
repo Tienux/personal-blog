@@ -143,7 +143,9 @@ title: Test
 
       const result = parseMarkdown(markdown);
 
-      expect(result.content).toContain('<a href="https://example.com">');
+      expect(result.content).toContain('<a href="https://example.com"');
+      expect(result.content).toContain('target="_blank"');
+      expect(result.content).toContain('rel="noopener noreferrer"');
     });
   });
 

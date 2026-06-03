@@ -1,46 +1,38 @@
 # Blog Portfolio
 
-Projet de blog
+Portfolio et blog personnel construit avec Nuxt 4.
 
-## Setup
+## Prérequis
 
-Make sure to install dependencies:
+- Node.js 20+ recommandé
+- npm
+
+## Installation
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+## Développement
 
 ```bash
-# npm
 npm run dev
 ```
 
-## Production
+Le site démarre en local sur `http://localhost:3000`.
 
-Build the application for production:
+## Commandes utiles
 
 ```bash
-# npm
 npm run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
 npm run preview
+npm run lint
+npm test
 ```
+
+## Stack
+
+- Nuxt 4
+- Vue 3
+- @nuxtjs/i18n
+- Markdown parsé avec `marked` et nettoyé avec DOMPurify

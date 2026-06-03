@@ -47,7 +47,7 @@ const getProjectRoutes = async () => {
   for (const locale of SUPPORTED_LOCALES) {
     const localeDirectory = join(PROJECTS_ROOT, locale);
 
-    let files: string[] = [];
+    let files: string[];
     try {
       files = await readdir(localeDirectory);
     } catch {
