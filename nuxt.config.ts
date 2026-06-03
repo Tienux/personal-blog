@@ -22,7 +22,7 @@ export default defineNuxtConfig({
     },
   },
   nitro: {
-    preset: 'vercel',
+    preset: 'static',
     prerender: {
       routes: ['/sitemap.xml'],
     },
