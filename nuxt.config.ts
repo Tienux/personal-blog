@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-01-13',
   runtimeConfig: {
     public: {
-      siteUrl: 'https://example.com',
+      siteUrl: 'https://etienne-p-blog.vercel.app',
       siteName: 'Etienne Portron - Portfolio & Blog',
       defaultOgImage: '/og-image.jpg',
     },
@@ -15,7 +15,7 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Portfolio et blog tech d\'Etienne Portron.' },
         { property: 'og:title', content: 'Etienne Portron - Portfolio & Blog' },
         { property: 'og:description', content: 'Portfolio et blog tech d\'Etienne Portron.' },
-        { property: 'og:image', content: '/og-image.jpg' },
+        { property: 'og:image', content: 'https://etienne-p-blog.vercel.app/og-image.jpg' },
         { property: 'og:type', content: 'website' },
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
