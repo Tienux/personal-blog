@@ -28,9 +28,10 @@
     "skills_languages": "Programming Languages: Java, Python, Rust, JavaScript/TypeScript, C, C#",
     "skills_frameworks": "Frameworks and Tools: Nuxt.js, Spring Boot, Git / GitHub / GitLab",
     "career_title": "Professional Experience",
-    "career_1": "Internship - CGI France for MGEN (April-August 2025) - Development and maintenance of internal tools with SpringBoot and GitLab.",
-    "career_2": "Internship - Mutuelle de Poitiers (April-July 2024) - Evolution of an internal business tool with SpringBoot and VueJS.",
-    "career_3": "Seasonal Employment - Mutuelle de Poitiers (Summers 2021-2023) - Technical support and micro-network management.",
+    "career_1": "Internship - EDF (February-July 2026) - 3D CAD developer, contributions to internal tooling.",
+    "career_2": "Internship - CGI France for MGEN (April-August 2025) - Development and maintenance of internal tools with SpringBoot and GitLab.",
+    "career_3": "Internship - Mutuelle de Poitiers (April-July 2024) - Evolution of an internal business tool with SpringBoot and VueJS.",
+    "career_4": "Seasonal Employment - Mutuelle de Poitiers (Summers 2021-2023) - Technical support and micro-network management.",
     "other_title": "Other Information",
     "other_text": "This blog reflects my personal activities and technical explorations. My opinions are my own and do not necessarily reflect those of my employers or affiliations. I am open to collaboration and discussions on technology-related topics, so feel free to contact me via social networks or email.",
     "nuxt": "The entire site was built with Nuxt 4"
