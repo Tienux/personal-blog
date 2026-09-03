@@ -253,7 +253,7 @@ watch(
 }
 
 .not-found a:hover {
-  background: #667eea;
+  background: var(--color-primary);
   color: #ffffff;
 }
 
