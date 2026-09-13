@@ -4,7 +4,7 @@ Portfolio et blog personnel construit avec Nuxt 4.
 
 ## Prérequis
 
-- Node.js 20+ recommandé
+- Node.js 22.22+ recommandé (requis pour npm 12)
 - npm
 
 ## Installation

@@ -16,6 +16,7 @@
     <p>{{ $t('about.career_2') }}</p>
     <p>{{ $t('about.career_3') }}</p>
     <p>{{ $t('about.career_4') }}</p>
+    <p>{{ $t('about.career_5') }}</p>
     <h2>{{ $t('about.other_title') }}</h2>
     <p>
       {{ $t('about.other_text') }}
